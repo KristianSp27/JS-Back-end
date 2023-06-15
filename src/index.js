@@ -1,10 +1,18 @@
 const express = require("express");
 const handlebars = require("express-handlebars");
 const path = require("path");
+const mongoose = require("mongoose");
 
 const routes = require("./routes");
 
 const app = express();
+
+//todo change db name
+mongoose
+  .connect(`mongodb://localhost/petstagram`)
+  .then(() => console.log("DB connected successdully"))
+  .catch((err) => console.log("DB error,", err.message));
+
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -21,4 +29,4 @@ app.set("views", "src/views");
 app.use(express.static(path.resolve(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
-app.listen(3000, console.log("Server is listening on port 5000..."));
+app.listen(3000, console.log("3000"));
