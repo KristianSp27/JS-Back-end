@@ -9,7 +9,7 @@ const app = express();
 
 //todo change db name
 mongoose
-  .connect(`mongodb://localhost/petstagram`)
+  .connect(`mongodb://127.0.0.1:27017/petstagram`)
   .then(() => console.log("DB connected successdully"))
   .catch((err) => console.log("DB error,", err.message));
 
